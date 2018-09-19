@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://5b0ag2m9jb.execute-api.ap-northeast-1.amazonaws.com/dev
+HOST: https://ehngdvmktf.execute-api.ap-northeast-1.amazonaws.com/dev
 
 # Orchxtra Web
 
@@ -31,55 +31,41 @@ Orchxtra Web API Documentation
 + phoneNumber: 87654321 (string)
 
 
-# Group Metadata / Settings
+# Group Private Service Account
 
-## GET Metadata [/metadata]
+## Create Private Service Account [/private/service-accounts]
 
-### GET Metadata [GET]
+### Create Private Service Account [POST]
 + Request
     + Headers
 
             Content-Type: (application/json)
-            Authorization: abcdfef
+            Authorization: Basic abcxyz
 
+    + Attributes (ServiceAccountInput)
+    
 + Response 200 (application/json)
-    - Attributes (Metadata)
-
-## GET Universities [/universites{?keyword}{?country}{?page}{?size}]
-
-+ Parameters
-  + keyword: singapore (string)
-  + country: SG (string)
-  + page: 1 (number)
-  + size: 20 (number)
-
-### GET Universities [GET]
-+ Request
-    + Headers
-
-            Content-Type: (application/json)
-            Authorization: abcdfef
-
-+ Response 200 (application/json)
-    - Attributes
-      - data (array[University])
-      - pagination (PaginationMeta)
+    - Attributes (ServiceAccount)
 
 ## Data Structures
 
-### University
-+ id: 1 (number)
-+ name: National University of Singapore (string)
-+ website: www.nus.edu.sg (string)
-+ countryCode: SG (string)
+### ServiceAccountInput
++ name: `Obama Alibaba` (string)
++ firstName: Obama (string)
++ lastName: Alibaba (string)
++ mobileCode: +65 (string)
++ mobileNumber: 87654321 (string)
++ email: example@google.com (string, required)
++ licenseCode: LIGHT (string, required)
+    Default license code: LIGHT, PRO and EXPERT
++ expiredAt: `2019-01-05T14:48:00.000Z` (string, required)
++ customerId: ABC123 (string, required)
++ transactionId: T001 (string)
 
-### Metadata
-+ censamStaffCategories: `External Collaborator`, `MIT Associate Investigator` (array[string])
-+ jobTitles: `Administrator`, `IT Manager` (array[string])
-+ titles: Dr, Mdm, Miss (array[string])
-+ contractTypes: `Employment-Contract`, `PhD Graduate Fellowship` (array[string])
-+ workingCategories: `Citizen`, `S Pass` (array[string])
-
+### ServiceAccount (ServiceAccountInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2018-01-05T14:48:00.000Z` (string)
++ updatedAt: `2018-01-05T14:48:00.000Z` (string)
 
 # Group Institute 
 
@@ -414,6 +400,36 @@ Orchxtra Web API Documentation
           
 + Response 204
 
+
+# Group University
+
+## GET Universities [/universites{?keyword}{?country}{?page}{?size}]
+
++ Parameters
+  + keyword: singapore (string)
+  + country: SG (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### GET Universities [GET]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[University])
+      - pagination (PaginationMeta)
+
+## Data Structures
+
+### University
++ id: 1 (number)
++ name: National University of Singapore (string)
++ website: www.nus.edu.sg (string)
++ countryCode: SG (string)
 
 # Group Department 
 
