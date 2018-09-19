@@ -1,0 +1,1999 @@
+FORMAT: 1A
+HOST: https://5b0ag2m9jb.execute-api.ap-northeast-1.amazonaws.com/dev
+
+# Orchxtra Web
+
+Orchxtra Web API Documentation
+
+## Data Structures
+
+### PaginationMeta
++ page: 1 (number)
++ pageSize: 20 (number)
++ total: 1 (number)
++ totalPages: 1 (number)
+
+### FileInput
++ name: attachment (string)
++ extension: jpg (string)
++ data: abcxyz (string)
+
+### FileInfo (FileInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+
+### Amount 
++ amount: 1000 (number)
++ currency: SGD (string)
+
+### Phone
++ phoneCode: +65 (string)
++ phoneNumber: 87654321 (string)
+
+
+# Group Metadata / Settings
+
+## GET Metadata [/metadata]
+
+### GET Metadata [GET]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes (Metadata)
+
+## GET Universities [/universites{?keyword}{?country}{?page}{?size}]
+
++ Parameters
+  + keyword: singapore (string)
+  + country: SG (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### GET Universities [GET]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[University])
+      - pagination (PaginationMeta)
+
+## Data Structures
+
+### University
++ id: 1 (number)
++ name: National University of Singapore (string)
++ website: www.nus.edu.sg (string)
++ countryCode: SG (string)
+
+### Metadata
++ censamStaffCategories: `External Collaborator`, `MIT Associate Investigator` (array[string])
++ jobTitles: `Administrator`, `IT Manager` (array[string])
++ titles: Dr, Mdm, Miss (array[string])
++ contractTypes: `Employment-Contract`, `PhD Graduate Fellowship` (array[string])
++ workingCategories: `Citizen`, `S Pass` (array[string])
+
+
+# Group Institute 
+
+## Research Institutes [/institutes{?keyword}{?page}{?size}]
+
+### FILTER Research Institutes [GET]
+
++ Parameters
+  + keyword: singapore (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[Institute])
+      - pagination (PaginationMeta)
+
+
+## Create Research Institutes [/institutes]
+
+### Create Research Institutes [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (InstituteForm)
+    + Body
+
+            {
+              "name": "National University of Singapore",
+              "abbrv": "NUS",
+              "description": "National University of Singapore",
+              "logo": "abcxyz",
+              "logoExtension": "jpg"
+            }
+
++ Response 200 (application/json)
+    - Attributes (Institute)
+
+## Research Institutes Detail [/institutes/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Research Institutes [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (InstituteForm)
+    + Body
+
+            {
+              "name": "National University of Singapore",
+              "abbrv": "NUS",
+              "description": "National University of Singapore",
+              "logo": "abcxyz",
+              "logoExtension": "jpg"
+            }
+          
++ Response 200 (application/json)
+    - Attributes (Institute)
+
+
+### GET Research Institutes [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (Institute)
+
+### DELETE Research Institutes [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+# Group Programme
+
+## CREATE Programme [/programmes]
+
+### CREATE Programme [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (CreateProgrammeForm)
+    + Body
+
+            {
+              "name": "National University of Singapore",
+              "abbrv": "NUS",
+              "description": "National University of Singapore",
+              "type": "programme",
+              "finances": [
+                {
+                  "startDate": "2017-01-05T14:48:00.000Z",
+                  "endDate": "2017-12-05T14:48:00.000Z",
+                  "phase": "I",
+                  "status": "active"
+                }
+              ]
+            }
+
++ Response 200 (application/json)
+    - Attributes (Programme)
+
+## Programme Detail [/programmes/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+
+### GET Programme Detail [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (Programme)
+
+### UPDATE Programme [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (InstituteForm)
+    + Body
+
+            
+            {
+              "name": "National University of Singapore",
+              "abbrv": "NUS",
+              "description": "National University of Singapore",
+              "type": "programme",
+              "finances": [
+                {
+                  "startDate": "2017-01-05T14:48:00.000Z",
+                  "endDate": "2017-12-05T14:48:00.000Z",
+                  "phase": "I",
+                  "status": "active"
+                }
+              ]
+            }
+          
++ Response 200 (application/json)
+    - Attributes (Programme)
+
+
+### DELETE Programme [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ResearchFinance
++ startDate: `2017-01-05T14:48:00.000Z` (string)
++ endDate: `2017-12-05T14:48:00.000Z` (string)
++ phase: I (string)
++ status: active (string)
+
+### CommonInstitute
++ id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ name: `National University of Singapore` (string)
++ abbrv: NUS (string)
++ description: `National University of Singapore` (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
++ updatedAt: `2011-10-05T14:48:00.000Z` (string)
+
+### ProgrammeItem (CommonInstitute)
++ parentId: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ type: `programme` (enum[string])
+    + Members
+        + programme
+        + centre
++ finances (array[ResearchFinance])
+
+### ProgrammeForm (CommonInstituteForm)
++ type: `programme` (enum[string])
+    + Members
+        + programme
+        + centre
++ finances (array[ResearchFinance])
+
+### CreateProgrammeForm (ProgrammeForm)
++ children (array[ProgrammeForm])
+
+### Programme (ProgrammeItem)
++ children (array[ProgrammeItem])
+
+### CommonInstituteForm 
++ name: `National University of Singapore` (string)
++ abbrv: NUS (string)
++ description: `National University of Singapore` (string)
+
+### InstituteForm (CommonInstituteForm)
++ logo (string)
++ logoExtension (string)
+
+### Institute (CommonInstitute)
++ logo (string)
++ logoExtension (string)
++ finances (array[ResearchFinance])
++ programmes (array[Programme])
+
+# Group Faculty 
+
+## Faculties / Schools [/faculties{?keyword}{?programmeId}{?page}{?size}]
+
++ Parameters
+  + keyword: singapore (string)
+  + programmeId: NUS (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Faculties / Schools [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[Faculty])
+      - pagination (PaginationMeta)
+
+## Create Faculty [/faculties]
+
+### Create Faculty [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (FacultyForm)
+    + Body
+
+            {
+              "name": "School of Engineering",
+              "programmeIds": [
+                "d6e0ebb4-4857-11e8-842f-0ed5f89f718b"
+              ]
+            }
+
++ Response 200 (application/json)
+    - Attributes (Faculty)
+
+## Faculty Detail [/faculties/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Faculty [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (FacultyForm)
+    + Body
+
+            {
+              "name": "School of Engineering",
+              "programmeIds": [
+                "d6e0ebb4-4857-11e8-842f-0ed5f89f718b"
+              ]
+            }
+          
++ Response 200 (application/json)
+    - Attributes (Faculty)
+
+
+### GET Faculty [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (Faculty)
+
+### DELETE Faculty [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+
+# Group Department 
+
+## Departments [/departments{?keyword}{?programmeId}{?page}{?size}]
+
++ Parameters
+  + keyword: singapore (string)
+  + programmeId: NUS (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Departments [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[Department])
+      - pagination (PaginationMeta)
+
+## Create Department [/departments]
+
+### Create Department [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (DepartmentForm)
+    + Body
+
+            {
+              "name": "School of Engineering",
+              "programmeIds": [
+                "d6e0ebb4-4857-11e8-842f-0ed5f89f718b"
+              ]
+            }
+
++ Response 200 (application/json)
+    - Attributes (Department)
+
+## Department Detail [/departments/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Department [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (DepartmentForm)
+    + Body
+
+            {
+              "name": "School of Engineering",
+              "programmeIds": [
+                "d6e0ebb4-4857-11e8-842f-0ed5f89f718b"
+              ]
+            }
+          
++ Response 200 (application/json)
+    - Attributes (Department)
+
+
+### GET Department [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (Department)
+
+### DELETE Department [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+ 
+### Faculty 
++ id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ name: School of Engineering (string)
++ programmeIds: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (array[string])
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
++ updatedAt: `2011-10-05T14:48:00.000Z` (string)
+
+### FacultyForm
++ name: School of Engineering (string)
++ programmeIds: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (array[string])
+
+### Department (Faculty)
+### DepartmentForm (FacultyForm)
+
+# Group Profile
+
+## Get Profile [/me]
+
+### GET Profile [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes (User)
+
+## Data Structures
+
+### Role 
++ id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ name: Super Admin (string)
++ permissions: staffs_list, staffs_create, staffs_edit (array[string])
+
+### User 
++ id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ staffId: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ displayName: Jon Snow (string)
++ firstName: Jon (string)
++ lastName: Snow (string)
++ mobileCode: 65 (string)
++ mobileNumber: 87654321 (string)
++ email: jon@orchxtra.xyz (string)
++ role (Role)
++ registeredDate: `2011-10-05T14:48:00.000Z` (string)
+# Group CENSAM Staff Category
+
+## CENSAM Staff Categories [/staffs-categories]
+
+### FILTER CENSAM Staff Categories [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[ResearchCategory])
+      - pagination (PaginationMeta)
+
+## Create CENSAM Staff Categories [/staff-categories]
+
+### Create CENSAM Staff Category [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (CensamStaffCategoryInput)
+
++ Response 200 (application/json)
+    - Attributes (CensamStaffCategory)
+
+## CENSAM Staff Category Detail [/staff-categories/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE CENSAM Staff Category [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (CensamStaffCategoryInput)
+          
++ Response 200 (application/json)
+    - Attributes (CensamStaffCategory)
+
+
+### GET CENSAM Staff Category [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (CensamStaffCategory)
+
+### DELETE CENSAM Staff Category [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### CensamStaffCategoryInput
++ name: Urban (string)
+
+### CensamStaffCategory (CensamStaffCategoryInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
+
+
+# Group Staff
+
+## Staffs [/staffs{?keyword}{?supervisorId}{?startDate}{?endDate}{?page}{?size}]
+
++ Parameters
+  + keyword: singapore (string)
+  + supervisorId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+  + startDate: `2011-10-05T14:48:00.000Z` (string)
+  + endDate: `2011-10-05T14:48:00.000Z` (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Staffs [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[StaffItem])
+      - pagination (PaginationMeta)
+
+## Create Staff [/staffs]
+
+### Create Staff [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (StaffForm)
+
++ Response 200 (application/json)
+    - Attributes (Staff)
+
+## Staff Detail [/staffs/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Staff [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (StaffForm)
+          
++ Response 200 (application/json)
+    - Attributes (Staff)
+
+
+### GET Staff [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (Staff)
+
+### DELETE Staff [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+
+## Promote Staff [/staffs/{id}/promote]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### Promote Staff [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (PromoteStaffForm)
+    + Body
+
+            {
+                
+                "jobTitle": "Administrator",
+                "jobLevel": "1",
+                "startDate": "2011-10-05T14:48:00.000Z",
+                "censamStaffCategory": "External Collaborator"
+            }
+          
++ Response 200 (application/json)
+    - Attributes (Staff)
+
+
+## Extend Staff Contract [/staffs/{id}/extend-contract]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### Extend Staff Contract [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (PromoteStaffForm)
+    + Body
+
+            {
+                
+                "jobTitle": "Administrator",
+                "jobLevel": "1",
+                "startDate": "2011-10-05T14:48:00.000Z",
+                "censamStaffCategory": "External Collaborator"
+            }
+          
++ Response 200 (application/json)
+    - Attributes (Staff)
+
+
+## Archived Staffs [/staffs/archives{?page}{?size}]
+
++ Parameters
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Archived Staffs [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[StaffArchive])
+      - pagination (PaginationMeta)
+
+
+## Create Archived Staff [/staffs/archives]
+
+### Create Archived Staff [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (StaffArchiveForm)
+
++ Response 200 (application/json)
+    - Attributes (StaffArchive)
+
+## Archived Staff Detail [/staffs/archives/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Archived Staff [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (StaffArchiveForm)
+          
++ Response 200 (application/json)
+    - Attributes (StaffArchive)
+
+
+### GET Archived Staff [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (StaffArchive)
+
+### Unarchive Staff [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+
+## Data Structures
+
+### StaffExtendContractForm 
++ endDate: `2018-10-05T14:48:00.000Z` (string)
+
+### PromoteStaffForm 
++ jobTitle: `Data Manager` (string)
++ jobLevel: 1 (number)
++ censamStaffCategoryId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ startDate: `2011-10-05T14:48:00.000Z` (string)
+
+### StaffJobForm
++ jobTitle: Administrator (string)
++ jobLevel: 1 (number)
++ censamStaffCategoryId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ startDate: `2011-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
+
+### StaffJob 
+
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ jobTitle: Administrator (string)
++ jobLevel: 1 (number)
++ censamStaffCategoryId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ startDate: `2011-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
+
+### StaffForm 
++ avatar (FileInput)
++ title: Mr (string)
++ firstName: Jon (string)
++ lastName: Snow (string)
++ nationalityCode: SG (string)
+
++ gender: male (string)
++ workCategoryId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ mobile (Phone)
++ officePhone (Phone)
++ privateEmail: jon@orchxtra.xyz (string)
+
++ professionalEmail: jon@orchxtra.xyz (string)
++ facultyId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ censamStaffCategoryId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ researchInstituteId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ departmentId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ universityId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ supervisorId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ jobHistory (StaffJobForm)
+
+### StaffItem (StaffForm)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
++ upadtedAt: `2018-10-05T14:48:00.000Z` (string)
+
+### Staff (StaffItem)
++ jobHistories (array[StaffJob])
+
+### StaffArchiveForm
++ archivedDate: `2011-10-05T14:48:00.000Z` (string)
++ nextEmployerType: industry (enum[string])
+    + Members
+        + industry
+        + academia
+        + other
++ countryCode: SG (string)
++ companyName: USER (string)
++ position: `Project Manager` (string)
++ url: https://user.com.sg (string)
++ email: andy@user.com.sg (string)
++ officePhoneCode: 65 (string)
++ officePhoneNumber: 87654321 (string)
++ university: `NUS` (string)
++ researchInstitute: NUS (string)
++ faculty: `School of Engineering` (string)
++ department: `School of Engineering` (string)
++ supervisor: `Alex Lee` (string)
++ description: `Retired` (string)
+
+### StaffArchive (StaffArchiveForm)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
++ upadtedAt: `2018-10-05T14:48:00.000Z` (string)
+
+
+# Group Research Category
+
+## Research Categories [/research-categories{?page}{?size}]
+
++ Parameters
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Research Categories [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[ResearchCategory])
+      - pagination (PaginationMeta)
+
+## Create Research Categories [/research-categories]
+
+### Create Research Category [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ResearchCategoryInput)
+
++ Response 200 (application/json)
+    - Attributes (ResearchCategory)
+
+## Research Category Detail [/research-categories/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Research Category [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ResearchCategoryInput)
+          
++ Response 200 (application/json)
+    - Attributes (ResearchCategory)
+
+
+### GET Research Category [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (ResearchCategory)
+
+### DELETE Research Category [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ResearchCategoryInput
++ name: Urban (string)
+
+### ResearchCategory (ResearchCategoryInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
+
+# Group Report Type
+
+## Report Types [/report-types{?page}{?size}]
+
++ Parameters
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Report Types [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[ProjectReportType])
+      - pagination (PaginationMeta)
+
+## Create Report Types [/report-types]
+
+### Create Report Types [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectReportTypeInput)
+
++ Response 200 (application/json)
+    - Attributes (ProjectReportType)
+
+## Report Types Detail [/report-types/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Report Types [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectReportTypeInput)
+          
++ Response 200 (application/json)
+    - Attributes (ProjectReportType)
+
+
+### GET Report Types [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (ProjectReportType)
+
+### DELETE Report Types [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ProjectReportTypeInput
++ programmeIds: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b`, `d6e0ebb4-4857-11e8-842f-0ed5f89f718c` (array[string])
++ name: Monthly (string)
++ startDate: `2017-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
++ frequency: annually (enum[string])
+    + Members
+        + annually
+        + halfYearly
+        + quarterly
+        + monthly
+
+### ProjectReportType (ProjectReportTypeInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b`
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+
+# Group Project
+
+## Projects [/projects{?keyword}{?searchCategory}{?projectStatus}{?startDate}{?endDate}{?page}{?size}]
+
++ Parameters
+  + keyword: singapore (string)
+  + searchCategory: Urban (string)
+  + projectStatus: started (string)
+  + startDate: `2011-10-05T14:48:00.000Z` (string)
+  + endDate: `2011-10-05T14:48:00.000Z` (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Projects [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[ProjectItem])
+      - pagination (PaginationMeta)
+
+## Create Project [/projects]
+
+### Create Project [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectCreateInput)
+
++ Response 200 (application/json)
+    - Attributes (Project)
+
+## Project Detail [/projects/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Project [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectCreateInput)
+          
++ Response 200 (application/json)
+    - Attributes (Project)
+
+
+### GET Project [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (Project)
+
+### DELETE Project [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ProjectCreateInput
++ name: `Online monitoring & modeling of water distribution system` (string)
++ supervisorId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ projectStatus: started (enum[string])
+    + Members
+        + started
+        + progressing
+        + completed
++ abstract: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ scopeOfWork: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ objective: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ researchCategory: Urban (string)
++ startDate: `2017-10-05T14:48:00.000Z` (string)
++ endDate: `2017-10-05T14:48:00.000Z` (string)
++ phase: I (string)
++ year: 2018 (number)
++ attachments (array[FileInput])
+
+### ProjectItem (ProjectCreateInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+### Project (ProjectItem)
+
+# Group Project Report
+
+## Project Reports [/projects/{id}/reports{?page}{?size}]
+
++ Parameters
+  + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Project Reports [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[ProjectReport])
+      - pagination (PaginationMeta)
+
+## Create Project Report [/projects/{id}/reports]
+
+### Create Project Report [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectReportInput)
+
++ Response 200 (application/json)
+    - Attributes (ProjectReport)
+
+## Project Report Detail [/projects/{id}/reports/{reportId}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+    + reportId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE Project Report [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectReportInput)
+          
++ Response 200 (application/json)
+    - Attributes (ProjectReport)
+
+
+### GET Project Report [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (ProjectReport)
+
+### DELETE Project Report [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ProjectReportInput
++ phase: I (string)
++ year: 2018 (number)
++ reportTypeId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ content: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
+
+### ProjectReport (ProjectReportInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+# Group Sub-Project
+
+## Sub-Projects [/subprojects{?keyword}{?page}{?size}]
+
++ Parameters
+  + keyword: Urban (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Sub-Projects [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[SubProjectItem])
+      - pagination (PaginationMeta)
+
+## CREATE Sub-Project [/subprojects]
+
+### CREATE Sub-Project [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (CreateSubProjectInput)
+
++ Response 200 (application/json)
+    - Attributes (SubProject)
+
+## Sub-Project Detail [/subprojects/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE Sub-Project [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectInput)
+          
++ Response 200 (application/json)
+    - Attributes (SubProject)
+
+
+### GET Sub-Project [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (SubProject)
+
+### DELETE Sub-Project [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+# Group Sub-Project Staffs
+
+## Sub-Project Staffs [/subprojects/{id}/staffs]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+## CREATE Sub-Project Staff [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectStaffInput)
+
++ Response 200 (application/json)
+    - Attributes (SubProjectStaff)
+
+## Sub-Project Staff Detail [/subproject-staffs/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE Sub-Project Staff [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectStaffInput)
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectStaff)
+
+
+### GET Sub-Project Staff [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectStaff)
+
+### DELETE Sub-Project Staff [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+# Group Sub-Project Deliverables
+
+## CREATE Sub-Project Deliverable [/subprojects/{id}/deliverables]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+
+## CREATE Sub-Project Deliverable [POST]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectDeliverableInput)
+
++ Response 200 (application/json)
+    - Attributes (SubProjectDeliverable)
+
+## Sub-Project Deliverable Detail [/subproject-deliverables/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE Sub-Project Deliverable [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectDeliverableInput)
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectDeliverable)
+
+
+### GET Sub-Project Deliverable [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectDeliverable)
+
+### DELETE Sub-Project Deliverable [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+# Group Sub-Project Attachments
+
+## CREATE Sub-Project Attachments [/subprojects/{id}/attachments]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+
+## CREATE Sub-Project Attachments [POST]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (FileInput)
+
++ Response 200 (application/json)
+    - Attributes (FileInfo)
+
+## Sub-Project Attachment Detail [/subproject-attachments/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE Sub-Project Attachment [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (FileInput)
+          
++ Response 200 (application/json)
+    - Attributes (FileInfo)
+
+
+### GET Sub-Project Attachment [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (FileInfo)
+
+### DELETE Sub-Project Attachment [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### SubProjectInput
++ projectId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ researcherId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ researchCategory: `Urban` (string)
++ title: `Online monitoring & modeling of water distribution system` (string)
++ abstract: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ objective: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ startDate: `2017-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
+
+### CreateSubProjectInput (SubProjectInput)
++ staffs (array[SubProjectStaff])
++ deliverables (array[SubProjectDeliverableInput])
++ attachments (array[FileInput])
+
+### SubProjectItem (SubProjectInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+### SubProjectStaffInput 
++ staffId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ startDate: `2017-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
+
+### SubProjectStaff (SubProjectItem)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ jobId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+### SubProjectDeliverableInput 
++ number: `1` (string)
++ description: `Deliver Project` (string)
++ completionDate: `2018-10-05T14:48:00.000Z` (string)
+
+### SubProjectDeliverable (SubProjectDeliverableInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+### SubProject (SubProjectItem)
++ staffs (array[SubProjectStaff])
++ deliverables (array[SubProjectDeliverable])
++ attachments (array[FileInfo])
+
+# Group External Sub-Projects
+
+## External Sub-Projects [/external-subprojects{?keyword}{?page}{?size}]
+
++ Parameters
+  + keyword: Urban (string)
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER External Sub-Projects [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[SubProjectItem])
+      - pagination (PaginationMeta)
+
+## CREATE External Sub-Project [/external-subprojects]
+
+### CREATE External Sub-Project [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ExternalSubProjectInput)
+
++ Response 200 (application/json)
+    - Attributes (ExternalSubProject)
+
+## External Sub-Project Detail [/external-subprojects/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE External Sub-Project [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectInput)
+          
++ Response 200 (application/json)
+    - Attributes (ExternalSubProject)
+
+
+### GET External Sub-Project [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (ExternalSubProject)
+
+### DELETE External Sub-Project [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+# Group External Sub-Project Staffs
+
+## External Sub-Project Staffs [/external-subprojects/{id}/staffs]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+## CREATE External Sub-Project Staff [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectStaffInput)
+
++ Response 200 (application/json)
+    - Attributes (SubProjectStaff)
+
+## External Sub-Project Staff Detail [/external-subproject-staffs/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE External Sub-Project Staff [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectStaffInput)
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectStaff)
+
+
+### GET External Sub-Project Staff [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectStaff)
+
+### DELETE External Sub-Project Staff [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+
+# Group External Sub-Project Deliverables
+
+## CREATE External Sub-Project Deliverable [/external-subprojects/{id}/deliverables]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+
+## CREATE External Sub-Project Deliverable [POST]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectDeliverableInput)
+
++ Response 200 (application/json)
+    - Attributes (SubProjectDeliverable)
+
+## External Sub-Project Deliverable Detail [/external-subproject-deliverables/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE External Sub-Project Deliverable [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (SubProjectDeliverableInput)
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectDeliverable)
+
+
+### GET External Sub-Project Deliverable [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (SubProjectDeliverable)
+
+### DELETE External Sub-Project Deliverable [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+
+# Group External Sub-Project Attachments
+
+## CREATE External Sub-Project Attachments [/external-subprojects/{id}/attachments]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+
+## CREATE External Sub-Project Attachments [POST]
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (FileInput)
+
++ Response 200 (application/json)
+    - Attributes (FileInfo)
+
+## External Sub-Project Attachment Detail [/external-subproject-attachments/{id}]
+
++ Parameters
+    + id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
+
+### UPDATE External Sub-Project Attachment [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (FileInput)
+          
++ Response 200 (application/json)
+    - Attributes (FileInfo)
+
+### GET External Sub-Project Attachment [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (FileInfo)
+
+### DELETE External Sub-Project Attachment [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ExternalSubProjectInput
++ projectId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ isMainProjectRelated: true (boolean)
++ grantTitle: `Dynamics of sediment clouds` (string)
++ grantDescription: `Dynamics of sediment clouds` (string)
++ proposalTitle: `Dynamics of sediment clouds` (string)
++ outcomeStatus: successful (enum[string])
+    + Members
+        + successful
+        + unsuccessful
++ startDate: `2017-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
++ amount (Amount)
++ abstract: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ scopeOfWork: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ objective: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.` (string)
++ year: 2018 (number)
++ phase: II (string)
++ researchCategory: Urban (string)
+
+### ExternalSubProject (ExternalSubProjectInput)
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2017-10-05T14:48:00.000Z` (string)
++ updatedAt: `2017-10-05T14:48:00.000Z` (string)
+
+# Group Project Summary
+
+## Project Summaries [/project-summaries]
+
+### GET Project Summaries [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes (array[ProjectSummaryItem])
+
+## Data Structures
+
+### SimpleStaff
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ firstName: `Jon` (string)
++ lastName: `Snow` (string)
+
+### SubProjectSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ name: `Dynamics of sediment clouds` (string)
++ staffs (array[SimpleStaff])
++ kpi (KPISummaryItem)
+
+### JournalPublicationSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ name: `Dynamics of sediment clouds` (string)
++ publicationTitle: `Dynamics of sediment clouds` (string)
++ authors (array[SimpleStaff])
+
+### GrantSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ grantTitle: `Dynamics of sediment clouds` (string)
++ startDate: `2017-10-05T14:48:00.000Z` (string)
++ endDate: `2018-10-05T14:48:00.000Z` (string)
+
+### ConferenceSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `Dynamics of sediment clouds` (string)
+
+### SeminarSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `Dynamics of sediment clouds` (string)
+
+### AwardSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `Dynamics of sediment clouds` (string)
++ awardeeName: `Alex Lim` (string)
++ awardeeFrom: `MIT` (string)
+
+### SpecialInvitedLectureSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `Dynamics of sediment clouds` (string)
++ presenter (SimpleStaff)
++ invitedBy: `Alex Lim` (string)
+
+### InventionSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `Dynamics of sediment clouds` (string)
++ authors (array[SimpleStaff])
++ disclosedDate: `2017-10-05T14:48:00.000Z` (string)
+
+### PressReleaseSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `Dynamics of sediment clouds` (string)
++ type: `press_release` (enum[string])
+    + Members
+        + press_release
+        + featured_article
++ publishingDate: `2018-10-05T14:48:00.000Z` (string)
+
+### KPISummaryItem
++ publications (array[JournalPublicationSummaryItem])
++ conferences (array[ConferenceSummaryItem])
++ seminars (array[SeminarSummaryItem])
++ inventions (array[InventionSummaryItem])
++ grants (array[GrantSummaryItem])
++ awards (array[AwardSummaryItem])
++ specialInvitedLectures (array[SpecialInvitedLectureSummaryItem])
++ pressReleases (array[PressReleaseSummaryItem])
+
+### ProjectSummaryItem
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ name: `Dynamics of sediment clouds` (string)
++ kpi (KPISummaryItem)
++ subprojects (array[SubProjectSummaryItem])
