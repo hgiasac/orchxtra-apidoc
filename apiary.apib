@@ -68,6 +68,43 @@ Orchxtra Web API Documentation
 + updatedAt: `2018-01-05T14:48:00.000Z` (string)
 
 
+# Group Global Search
+
+## GlobalSearch [/search{?keyword}{?updatedFrom}{?updatedTo}{?page}{?size}]
+
++ Parameters
+  + page: 1 (number)
+  + size: 20 (number)
+  + updatedFrom: `2018-01-05` (string)
+  + updatedTo: `2018-05-05` (string)
+  + keyword: `project` (string)
+
+### GET GlobalSearch [GET]
+
++ Request
+    + Headers
+ 
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes 
+        - data (array[GlobalSearchResult])
+        - pagination (PaginationMeta)
+
+
+## Data Structures
+
+### GlobalSearchResult 
++ id: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ title: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ projectId: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ description: `No description` (string)
++ type: project (string)
++ createdBy: `d6e0ebb4-4857-11e8-842f-0ed5f89f718b` (string)
++ createdAt: `2018-01-05T14:48:00.000Z` (string)
++ updatedAt: `2018-01-05T14:48:00.000Z` (string)
+
 # Group Alert
 
 ## Alert Statistics [/alerts]
