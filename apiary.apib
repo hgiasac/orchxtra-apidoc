@@ -67,6 +67,224 @@ Orchxtra Web API Documentation
 + createdAt: `2018-01-05T14:48:00.000Z` (string)
 + updatedAt: `2018-01-05T14:48:00.000Z` (string)
 
+
+# Group Alert
+
+## Alert Statistics [/alerts]
+
+
+### GET Alert Statistics [GET]
+
++ Request
+    + Headers
+ 
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes (AlertStatistics)
+
+
+## Data Structures
+
+### PendingCounts 
++ projectCount: 0 (number)
++ subProjectCount: 0 (number)
++ externalSubProjectCount: 0 (number)
+
++ journalPublicationCount: 0 (number)
++ conferencePublicationCount: 0 (number)
++ seminarCount: 0 (number)
++ patentCount: 0 (number)
++ grantCount: 0 (number)
+
++ awardCount: 0 (number)
++ invitedLectureCount: 0 (number)
++ pressReleaseCount: 0 (number)
++ spinOffCompanyCount: 0 (number)
++ pertinentCount: 0 (number)
++ residencyCount: 0 (number)
++ pertinentInformationCount: 0 (number)
++ externalGrantCount: 0 (number)
+
+### AlertStatistics
++ pendingCounts (PendingCounts)
+
+# Group Onboarding Category
+
+## Project Onboarding Categories [/onboarding-categories{?page}{?size}]
+
++ Parameters
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Onboarding Categories [GET]
+
++ Request
+    + Headers
+ 
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[OnboardingCategory])
+      - pagination (PaginationMeta)
+
+## Create Onboarding Categories [/onboarding-categories]
+
+### Create Onboarding Categories [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (OnboardingCategoryInput)
+
++ Response 200 (application/json)
+    - Attributes (OnboardingCategory)
+
+## Project Onboarding Categories [/onboarding-categories/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Onboarding Categories [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (OnboardingCategoryInput)
+          
++ Response 200 (application/json)
+    - Attributes (OnboardingCategory)
+
+
+### GET Onboarding Category [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (OnboardingCategory)
+
+### DELETE Onboarding Category [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### OnboardingCategoryInput
++ name: Category (string)
++ description: Category (string)
+  
+### OnboardingCategory (OnboardingCategoryInput)
++ id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
++ updatedAt: `2011-10-05T14:48:00.000Z` (string)
+
+# Group Project Staff Type 
+
+## Project Staff Types [/project-staff-types{?page}{?size}]
+
++ Parameters
+  + page: 1 (number)
+  + size: 20 (number)
+
+### FILTER Project Staff Types [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
++ Response 200 (application/json)
+    - Attributes
+      - data (array[Department])
+      - pagination (PaginationMeta)
+
+## Create Project Staff Type [/project-staff-types]
+
+### Create Project Staff Type [POST]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectStaffTypeInput)
+
++ Response 200 (application/json)
+    - Attributes (Department)
+
+## Project Staff Type Detail [/project-staff-types/{id}]
+
++ Parameters
+    + id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
+
+### UPDATE Project Staff Type [PUT]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+
+    + Attributes (ProjectStaffTypeInput)
+          
++ Response 200 (application/json)
+    - Attributes (ProjectStaffType)
+
+
+### GET Project Staff Type [GET]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 200 (application/json)
+    - Attributes (ProjectStaffType)
+
+### DELETE Project Staff Type [DELETE]
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcdfef
+          
++ Response 204
+
+## Data Structures
+
+### ProjectStaffTypeInput
++ name: Contributor (string)
++ programmeIds: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (array[string])
+  
+### ProjectStaffType (ProjectStaffTypeInput)
++ id: d6e0ebb4-4857-11e8-842f-0ed5f89f718b (string)
++ createdAt: `2011-10-05T14:48:00.000Z` (string)
++ updatedAt: `2011-10-05T14:48:00.000Z` (string)
+
+
 # Group Institute 
 
 ## Research Institutes [/institutes{?keyword}{?page}{?size}]
